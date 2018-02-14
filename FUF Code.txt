@@ -1,0 +1,38 @@
+OBJECT Codeunit 50005 FUF Code
+{
+  OBJECT-PROPERTIES
+  {
+    Date=14.02.18;
+    Time=16:53:53;
+    Modified=Yes;
+    Version List=;
+  }
+  PROPERTIES
+  {
+    OnRun=BEGIN
+          END;
+
+  }
+  CODE
+  {
+
+    PROCEDURE AddStr@1000000001(BaseStr@1000000000 : Text;AddStr@1000000001 : Text) : Text;
+    BEGIN
+      // Create String by varius substrings
+      IF (AddStr <> '') THEN BEGIN
+        IF (BaseStr <> '') THEN BEGIN
+          BaseStr := STRSUBSTNO('%1 %2',BaseStr, AddStr);
+        END ELSE BEGIN
+          BaseStr := AddStr
+        END;
+      END ELSE BEGIN
+        BaseStr := COPYSTR(BaseStr,1,250);
+      END;
+      EXIT(BaseStr);
+    END;
+
+    BEGIN
+    END.
+  }
+}
+
